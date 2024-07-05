@@ -40,5 +40,8 @@ export default defineConfig({
     rollupOptions: {
       external: ['stream']
     }
+  },
+  server: {
+    host: true
   }
 })

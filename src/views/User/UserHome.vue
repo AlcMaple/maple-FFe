@@ -1,7 +1,12 @@
 <!-- 用户主页界面 -->
 <script setup>
+import { useRoute } from 'vue-router';
 import UserHomeLeft from '@/views/User/components/left/UserHomeLeft.vue';
 import LayoutFooter from '@/components/LayoutFooter.vue';
+
+const route = useRoute();
+const userId = route.query.userId;
+console.log("UserHome.vue: userId：", userId);
 </script>
 
 <template>
@@ -10,7 +15,7 @@ import LayoutFooter from '@/components/LayoutFooter.vue';
             <!-- 用户主页面 -->
             <UserHomeLeft />
             <!-- 三级路由出组件 -->
-            <RouterView />
+            <RouterView :userId="userId" />
         </div>
     </div>
     <LayoutFooter />

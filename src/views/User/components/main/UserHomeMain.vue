@@ -2,6 +2,11 @@
 import { getUserInfo } from "@/apis/user";
 import { onMounted, ref } from "vue";
 import { getUserTagList } from "@/apis/user";
+
+const props = defineProps({
+  userId: Number,
+})
+
 // 用户信息表
 let userData = ref([
   {
@@ -20,6 +25,16 @@ let userData = ref([
 // 获取用户标签序列
 const tags = ref([]);
 onMounted(() => {
+  // 获取userId
+  const userId = props.userId;
+  // console.log("userId:", userId);
+  // 如果userId不为undefined，则修改用户信息中的uid为userId
+  if (userId) {
+    userData.value[0].uid = userId;
+  }
+
+  console.log("userData:", userData.value);
+
   // 获取后台数据
   getUserInfo(userData).then((res) => {
     console.log("res:", res);

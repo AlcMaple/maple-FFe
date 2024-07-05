@@ -10,12 +10,19 @@ const account = accountStore.getAccount();
 const code = ref(account.code);
 const user = ref(account.userInfo);
 
+// console.log("account ： ",account);
+// console.log("account.userInfo ： ",account.userInfo);
+// console.log("user ： ",user.value);
+
+
 //使用路由
 const router = useRouter();
 const activeIndex = ref("1");
 //监听按键进行跳转
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
+  // console.log("user.value.uid ： ", user.value.uid);
+  
   if (key === "0") {
     router.push({
       path: "/",
@@ -29,6 +36,9 @@ const handleSelect = (key: string, keyPath: string[]) => {
   if (key == "2-1") {
     router.push({
       path: "/userHome",
+      query: {
+        userId: user.value.uid,
+      }
     });
   }
   if (key == "2-2") {
@@ -63,7 +73,7 @@ const handleSelect = (key: string, keyPath: string[]) => {
     <el-menu-item index="2" v-if="code != 0">登录以查看更多</el-menu-item>
     <el-sub-menu index="3" v-else>
       <!-- 用户信息 -->
-      <template #title>hi,{{ user.nickname }}</template>
+      <template #title>hi,{{ user.account }}</template>
       <el-menu-item index="2-1">我的主页</el-menu-item>
       <el-menu-item index="2-2">我的文章</el-menu-item>
       <el-menu-item index="2-3">退出登录</el-menu-item>
