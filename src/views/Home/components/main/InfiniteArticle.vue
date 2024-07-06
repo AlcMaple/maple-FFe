@@ -8,10 +8,10 @@ const articleList = ref([]);
 
 onMounted(() => {
   // 从后端获取数据
-  // getIndexTime().then(res => {
-  //   articleList.value = res.data.page.list;
-  //   console.log('首页返回数据',articleList.value);
-  // });
+  getIndexTime().then(res => {
+    articleList.value = res.data.page.list;
+    console.log('首页返回数据',articleList.value);
+  });
 
   // 模拟的数据流
   articleList.value = [{
