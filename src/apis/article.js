@@ -18,7 +18,8 @@ export function getArticleDetails(aid) {
 // 获取主页文章信息
 export function getHomeArticleDetails(aid) {
     return httpInstance({
-        url: `/api/article/${aid}`,
+        url: `/article/${aid}`,
+        // url: `/api/article/${aid}`,
         method: 'get'
     });
 }
@@ -28,7 +29,7 @@ export function addArticle(article) {
     return httpInstance({
         url: `/article/`,
         method: 'post',
-        data:article
+        data: article
     });
 }
 
@@ -37,7 +38,7 @@ export function modifyArticle(article) {
     return httpInstance({
         url: `/article/`,
         method: 'put',
-        data:article
+        data: article
     });
 }
 
@@ -71,7 +72,7 @@ export function postSendMag(send) {
     return httpInstance({
         url: `/comment`,
         method: 'post',
-        data:send
+        data: send
     });
 }
 
@@ -80,5 +81,17 @@ export function deleteSendMag(comId) {
     return httpInstance({
         url: `/comment/${comId}`,
         method: 'delete',
+    });
+}
+
+// 处理点赞功能
+export function handleThumb(aid, likeCount,uid) {
+    return httpInstance({
+        url: `/article/${aid}/like`,
+        method: 'post',
+        data: {
+            likeCount: likeCount,
+            uid:uid
+        }
     });
 }

@@ -6,10 +6,12 @@ import InfiniteArticle from './InfiniteArticle.vue';
 <template>
   <el-tabs type="border-card">
     <el-tab-pane label="最新文章">
-      这里是灵感来源与交流乐园
+      <!-- 这里是灵感来源与交流乐园 -->
+      正在开发
     </el-tab-pane>
     <el-tab-pane label="你的关注">
-      你的兴趣所在
+      <!-- 你的兴趣所在 -->
+      正在开发
     </el-tab-pane>
   </el-tabs>
   <div style="height: 20px;"></div>

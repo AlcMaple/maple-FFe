@@ -29,16 +29,16 @@ const contentment = ref([])
 // 发送请求接收数据
 onMounted: {
     //接收参数
-    // getHomeArticleDetails(route.query.aid).then(res => {
-    //     console.log('获取文章信息', res.data);
-    //     article.value = res.data
-    // });
+    getHomeArticleDetails(route.query.aid).then(res => {
+        console.log('获取文章信息', res.data);
+        article.value = res.data
+    });
     // 接收文章评论
-    console.log(route.query.aid)
-    // getPublicContentment(route.query.aid).then(res=>{
-    //     console.log('文章评论',res)
-    //     contentment.value=res.data
-    // })
+    console.log("这些哪里？",route.query.aid)
+    getPublicContentment(route.query.aid).then(res=>{
+        console.log('文章评论',res)
+        contentment.value=res.data
+    })
 
     // 模拟评论数据
     contentment.value = [{
