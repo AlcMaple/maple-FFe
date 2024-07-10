@@ -16,7 +16,7 @@ export function getUserTagList() {
 }
 
 export function getUserArticleList(data) {
-    console.log(data);
+    console.log("getUserArticleList：",data);
     return httpInstance({
         url: `/article`,
         method: 'post',

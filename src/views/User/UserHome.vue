@@ -13,7 +13,7 @@ console.log("UserHome.vue: userId：", userId);
     <div class="borderMain">
         <div style="display: flex;margin-bottom: 50px;justify-content: center;">
             <!-- 用户主页面 -->
-            <UserHomeLeft />
+            <UserHomeLeft :userId="userId"/>
             <!-- 三级路由出组件 -->
             <RouterView :userId="userId" />
         </div>

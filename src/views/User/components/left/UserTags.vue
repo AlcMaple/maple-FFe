@@ -7,7 +7,13 @@ const tagsData = ref([]);
 let loadTagsData = ref()
 // 接收回传信息
 const msg = ref('')
+const props = defineProps({
+  userId: Number,
+})
 onMounted: {
+  // 获取userId
+  const userId = props.userId;
+  console.log("userId:", userId);
   // 加载参数
   // loadTagsData = async () => {
   //   const res = await getUserTagList();
@@ -41,7 +47,8 @@ onMounted: {
 // 编辑
 const editedTag = ref({
   tagId: 0,
-  name: ''
+  name: '',
+  oldName: ''
 });
 
 // 是否启动编辑栏
@@ -51,22 +58,24 @@ const edit = ref({
 })
 
 // 开启编辑
-const openEdit = (tagId) => {
+const openEdit = (tag) => {
   edit.value.status = true;
-  edit.value.tag = tagId
+  edit.value.tag = tag.tagId
+  editedTag.value.oldName = tag.name
 }
 
 //新增标签
 const addNewTag = () => {
   let tag = ref({
-    name: editedTag.value.name
+    name: editedTag.value.name,
+    uid : props.userId
   })
-  // postNewTag(tag.value).then((res) => {
-  //   console.log(res);
-  //   msg.value = ''
-  //   msg.value = res.msg
-  //   loadTagsData();
-  // })
+  postNewTag(tag.value).then((res) => {
+    console.log(res);
+    msg.value = ''
+    msg.value = res.msg
+    // loadTagsData();
+  })
   alert('模拟新增')
 }
 
@@ -74,12 +83,12 @@ const addNewTag = () => {
 const handleSubmit = (tagId) => {
   edit.value.status = false
   editedTag.value.tagId = tagId
-  // updateTagName(editedTag.value).then((res) => {
+  updateTagName(editedTag.value).then((res) => {
 
-  //   msg.value = ''
-  //   msg.value = res.msg
-  //   loadTagsData();
-  // })
+    msg.value = ''
+    msg.value = res.msg
+    // loadTagsData();
+  })
   alert('模拟修改')
 };
 
@@ -114,7 +123,7 @@ const handleDelete = (tagId) => {
           <div class="flex-grow" />
           <!-- 删除与编辑 -->
           <el-button style="margin-left: 5px;" @click="handleDelete(tag.tagId)" text>删除</el-button>
-          <el-button @click="openEdit(tag.tagId)" text>编辑</el-button>
+          <el-button @click="openEdit(tag)" text>编辑</el-button>
         </div><!-- 编辑框 -->
         <div v-if="edit.status && tag.tagId === edit.tag" style="margin-top: 10px;">
           <div class="center">

@@ -60,8 +60,8 @@ onMounted: {
   code.value = account.code;
   // 获取后端数据
   getUserArticleList(articleSubmit.value).then((res) => {
-    console.log("res：", res);
-    console.log("res.articleList：", res.articleList);
+    // console.log("res：", res);
+    // console.log("res.articleList：", res.articleList);
     // articleList.value = res.data.pageInfo.list;
     articleList.value = res.articleList;
   });

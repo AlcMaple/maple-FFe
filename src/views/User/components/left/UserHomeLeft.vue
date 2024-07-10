@@ -12,10 +12,14 @@ import {
 } from '@element-plus/icons-vue'
 // 使用路由
 const router = useRouter();
+const props = defineProps({
+  userId: Number,
+})
 // 监听按钮状态
 const createArticle=()=>{
     router.push({
-        path: '/editor'
+        path: '/editor',
+        query: { userId: props.userId } // 使用 query 传递 userId
     })
 }
 // 修改资料
@@ -27,14 +31,16 @@ const jumpEmpty = () => {
 // 用户主页
 const jumpUserHome = () => {
     router.push({
-        path: '/userHome'
+        path: '/userHome',
+        query: { userId: props.userId } // 使用 query 传递 userId
     })
 }
 
 // 跳转标签
 const jumpTags = () => {
     router.push({
-        path: '/userHome/tags'
+        path: '/userHome/tags',
+        query: { userId: props.userId } // 使用 query 传递 userId
     })
 }
 
@@ -48,7 +54,8 @@ const jumpProfile = () => {
 // 全部文章
 const jumpArticle = () => {
     router.push({
-        path: '/userHome/article'
+        path: '/userHome/article',
+        query: { userId: props.userId } // 使用 query 传递 userId
     })
 }
 </script>
