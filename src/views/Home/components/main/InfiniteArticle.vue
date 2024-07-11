@@ -11,8 +11,15 @@ onMounted(() => {
   getIndexTime().then((res) => {
     console.log("首页返回的数据", res);
     // articleList.value = res.data.page.list;
-    articleList.value = res.data
+    articleList.value = res.data;
     // console.log('首页返回数据',articleList.value);
+
+    // 处理图片地址
+    for (let i = 0; i < articleList.value.length; i++) {
+      const img = `data:image/jpg;base64,${res.data[i].uavator}`;
+      // console.log(img);
+      articleList.value[i].uavator = img;
+    }
   });
 
   // 模拟的数据流

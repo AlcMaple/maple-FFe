@@ -75,6 +75,18 @@ onMounted: {
     // console.log("静态评论",contentment.value);
     console.log("文章评论", res.data);
     contentment.value = res.data;
+
+    // 评论头像处理
+    for (let i = 0; i < contentment.value.length; i++) {
+      const img = `data:image/jpg;base64,${res.data[i].uavator}`;
+      contentment.value[i].uavator = img;
+
+      // 评论子头像处理
+      for (let j = 0; j < contentment.value[i].subReply.length; j++) {
+        const img2 = `data:image/jpg;base64,${res.data[i].subReply[j].uavator}`;
+        contentment.value[i].subReply[j].uavator = img2;
+      }
+    }
   });
 
   // 模拟评论

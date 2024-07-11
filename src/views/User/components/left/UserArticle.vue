@@ -4,7 +4,7 @@ import ArticleCardFull from "@/components/article/ArticleCardFull.vue";
 
 import { getUserArticleList } from "@/apis/user";
 import { onMounted, ref } from "vue";
-import { useRoute } from 'vue-router';
+import { useRoute } from "vue-router";
 
 // const route = useRoute();
 // const authorUserId = route.query.userId;
@@ -36,6 +36,11 @@ onMounted(() => {
     // articleList.value = res.data.pageInfo.list;
     articleList.value = res.articleList;
     // console.log(articleList.value)
+    for (let i = 0; i < articleList.value.length; i++) {
+      const img = `data:image/jpg;base64,${res.articleList[i].uavator}`;
+      // console.log(img);
+      articleList.value[i].uavator = img;
+    }
   });
   articleList.value = [
     // {

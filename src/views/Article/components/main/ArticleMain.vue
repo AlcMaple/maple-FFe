@@ -8,24 +8,24 @@ import { onMounted, ref } from "vue";
 
 // 模拟文章数据
 const article = ref({
-  title: "前端vue入门(模拟数据 组件复用 :-))",
-  content:
-    "# Linux\n" +
-    "***vue :*** [vue3](https://cn.vuejs.org/)\n" +
-    "***CSDN :*** [CSDN官网](https://www.csdn.net/)\n" +
-    "***LeetCode :*** [力扣刷题](https://leetcode.cn/problems/)\n" +
-    "[linux](http://linux.vbird.org/linux_basic/)\n" +
-    "懒得每一个都写不一样了🤣",
-  tags: [
-    {
-      name: "Linux",
-    },
-    {
-      name: "入门",
-    },
-  ],
-  // 开启文章评论
-  commentabled: true,
+  // title: "前端vue入门(模拟数据 组件复用 :-))",
+  // content:
+  //   "# Linux\n" +
+  //   "***vue :*** [vue3](https://cn.vuejs.org/)\n" +
+  //   "***CSDN :*** [CSDN官网](https://www.csdn.net/)\n" +
+  //   "***LeetCode :*** [力扣刷题](https://leetcode.cn/problems/)\n" +
+  //   "[linux](http://linux.vbird.org/linux_basic/)\n" +
+  //   "懒得每一个都写不一样了🤣",
+  // tags: [
+  //   {
+  //     name: "Linux",
+  //   },
+  //   {
+  //     name: "入门",
+  //   },
+  // ],
+  // // 开启文章评论
+  // commentabled: true,
 });
 // 接收参数
 const route = useRoute();
@@ -42,6 +42,18 @@ onMounted: {
   getPublicContentment(route.query.aid).then((res) => {
     console.log("文章评论", res);
     contentment.value = res.data;
+
+    // 评论头像处理
+    for (let i = 0; i < contentment.value.length; i++) {
+      const img = `data:image/jpg;base64,${res.data[i].uavator}`;
+      contentment.value[i].uavator = img;
+
+      // 评论子头像处理
+      for (let j = 0; j < contentment.value[i].subReply.length; j++) {
+        const img2 = `data:image/jpg;base64,${res.data[i].subReply[j].uavator}`;
+        contentment.value[i].subReply[j].uavator = img2;
+      }
+    }
   });
 
   // 模拟评论数据

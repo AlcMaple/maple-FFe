@@ -84,14 +84,16 @@ const getImageUrl = (path) => {
     <!-- 第一栏 包含用户 时间 标签 -->
     <el-row class="row">
       <el-col :span="4">
-        <!-- <img
+        <div style="display: flex; align-items: center">
+          <!-- <img
           :src="article.uavator"
           style="height: 30px; border-radius: 50%; margin-right: 15px"
         />{{ article.author }} -->
-        <img
-          :src="getImageUrl(article.uavator)"
-          style="height: 30px; border-radius: 50%; margin-right: 15px"
-        />{{ article.author }}
+          <img
+            :src="article.uavator"
+            style="height: 30px; border-radius: 50%; margin-right: 15px"
+          /><span>{{ article.author }}</span>
+        </div>
       </el-col>
       <el-col :span="8">
         <el-text>{{ article.updateTime }}</el-text>

@@ -31,7 +31,7 @@ onMounted(() => {
   // 如果userId不为undefined，则修改用户信息中的uid为userId
   if (userId) {
     userData.value[0].uid = userId;
-  }
+  } 
 
   console.log("userData:", userData.value);
 
@@ -39,9 +39,12 @@ onMounted(() => {
   getUserInfo(userData).then((res) => {
     console.log("res:", res);
     if (res) {
-      console.log(res);
+      // console.log(res);
       userData.value = [res.userInfo];
       // console.log(userData.value[0]);
+      const img = `data:image/jpg;base64,${res.userInfo.avator}`;
+      console.log(img);
+      userData.value[0].avator = img;
     }
   });
   getUserTagList(userData.value[0].uid).then((res) => {

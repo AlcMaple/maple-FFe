@@ -32,11 +32,12 @@ const formLabelAlign = reactive({
   password: "",
 });
 
+// 规则，只允许英文字母，最多14个英文字母
 var validateUsername = (rule, value, callback) => {
   if (value === "") {
     callback(new Error("请输入账号名"));
-  } else if (!/^[0-9]{4,16}$/.test(value)) {
-    callback(new Error("请输入4到16位数字"));
+  } else if (!/^[a-zA-Z]{1,14}$/.test(value)) {
+    callback(new Error("最多14位英文字母"));
   } else {
     callback();
   }
@@ -46,13 +47,13 @@ var validatePassword = (rule, value, callback) => {
   if (value === "") {
     callback(new Error("请输入密码"));
   } else if (
-    !/^.*(?=.{6,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/.test(
+    !/^(?=.*[a-zA-Z]).{1,9}$/.test(
       value
     )
   ) {
     callback(
       new Error(
-        "最少6位，包括至少1个大写字母，1个小写字母，和1个数字，1个特殊字符"
+        "至少包含字母，且长度不超过9位"
       )
     );
   } else {
@@ -83,12 +84,12 @@ const rules = {
         <img style="height: 60px" src="@/assets/imgs/login_mini.png" />
       </div>
       <div>
-        <el-form
-          :label-position="labelPosition"
-          label-width="auto"
-          :model="formLabelAlign"
-          :rules="rules"
-          ref="formRef"
+          <el-form
+            :label-position="labelPosition"
+            label-width="auto"
+            :model="formLabelAlign"
+            :rules="rules"
+            ref="formRef"
         >
         <!-- <el-form
           :label-position="labelPosition"
