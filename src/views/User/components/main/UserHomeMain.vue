@@ -5,7 +5,7 @@ import { getUserTagList } from "@/apis/user";
 
 const props = defineProps({
   userId: Number,
-})
+});
 
 // 用户信息表
 let userData = ref([
@@ -44,26 +44,27 @@ onMounted(() => {
       // console.log(userData.value[0]);
     }
   });
-  // getUserTagList(userData.value[0].uid).then(res => {
-  //   console.log('用户主页',res);
-  //   tags.value=res.data.pageInfo.list
-  // });
+  getUserTagList(userData.value[0].uid).then((res) => {
+    console.log("用户主页", res);
+    // tags.value=res.data.pageInfo.list
+    tags.value = res.data;
+  });
   tags.value = [
-    {
-      name: "vue",
-    },
-    {
-      name: "axios",
-    },
-    {
-      name: "java",
-    },
-    {
-      name: "pinia",
-    },
-    {
-      name: "python",
-    },
+    // {
+    //   name: "vue",
+    // },
+    // {
+    //   name: "axios",
+    // },
+    // {
+    //   name: "java",
+    // },
+    // {
+    //   name: "pinia",
+    // },
+    // {
+    //   name: "python",
+    // },
   ];
 });
 </script>
@@ -82,7 +83,16 @@ onMounted(() => {
         <div>
           <span>我的标签: </span>
           <!-- 标签 -->
-          <el-tag class="tag" v-for="tag in tags">{{ tag.name }}</el-tag>
+          <!-- <el-tag class="tag" v-for="tag in tags">{{ tag.name }}</el-tag> -->
+          <!-- 标签 -->
+          <template v-if="tags && tags.length > 0">
+            <el-tag class="tag" v-for="tag in tags" :key="tag.id">{{
+              tag.name
+            }}</el-tag>
+          </template>
+          <template v-else>
+            <span>无</span>
+          </template>
         </div>
       </div>
       <!-- 展示简介 -->

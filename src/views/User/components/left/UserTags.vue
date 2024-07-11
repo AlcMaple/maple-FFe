@@ -1,107 +1,113 @@
 <!-- 对标签进行增删改查 -->
 <script setup>
-import { ref, reactive, onMounted } from 'vue';
-import { getUserTagList, updateTagName, deleteTag, postNewTag } from '@/apis/user';
+import { ref, reactive, onMounted } from "vue";
+import {
+  getUserTagList,
+  updateTagName,
+  deleteTag,
+  postNewTag,
+} from "@/apis/user";
 // 数据
 const tagsData = ref([]);
-let loadTagsData = ref()
+let loadTagsData = ref();
 // 接收回传信息
-const msg = ref('')
+const msg = ref("");
 const props = defineProps({
   userId: Number,
-})
+});
 onMounted: {
   // 获取userId
   const userId = props.userId;
   console.log("userId:", userId);
   // 加载参数
-  // loadTagsData = async () => {
-  //   const res = await getUserTagList();
-  //   tagsData.value = res.data.pageInfo.list;
-  // };
-  // loadTagsData();
+  loadTagsData = async () => {
+    const res = await getUserTagList(props.userId);
+    // tagsData.value = res.data.pageInfo.list;
+    tagsData.value = res.data;
+  };
+  loadTagsData();
 
   // 模拟数据
-  tagsData.value = [{
-    name: 'vue',
-    tagId: 1
-  },
-  {
-    name: 'axios',
-    tagId: 2
-  },
-  {
-    name: 'java',
-    tagId: 3
-  },
-  {
-    name: 'pinia',
-    tagId: 4
-  },
-  {
-    name: 'python',
-    tagId: 5
-  },]
+  tagsData.value = [
+    {
+      name: "vue",
+      tagId: 1,
+    },
+    {
+      name: "axios",
+      tagId: 2,
+    },
+    {
+      name: "java",
+      tagId: 3,
+    },
+    {
+      name: "pinia",
+      tagId: 4,
+    },
+    {
+      name: "python",
+      tagId: 5,
+    },
+  ];
 }
 
 // 编辑
 const editedTag = ref({
   tagId: 0,
-  name: '',
-  oldName: ''
+  name: "",
+  oldName: "",
 });
 
 // 是否启动编辑栏
 const edit = ref({
   tag: 0,
-  status: false
-})
+  status: false,
+});
 
 // 开启编辑
 const openEdit = (tag) => {
   edit.value.status = true;
-  edit.value.tag = tag.tagId
-  editedTag.value.oldName = tag.name
-}
+  edit.value.tag = tag.tagId;
+  editedTag.value.oldName = tag.name;
+};
 
 //新增标签
 const addNewTag = () => {
   let tag = ref({
     name: editedTag.value.name,
-    uid : props.userId
-  })
+    uid: props.userId,
+  });
   postNewTag(tag.value).then((res) => {
     console.log(res);
-    msg.value = ''
-    msg.value = res.msg
-    // loadTagsData();
-  })
-  alert('模拟新增')
-}
+    msg.value = "";
+    msg.value = res.msg;
+    loadTagsData();
+  });
+  alert("模拟新增");
+};
 
 // 提交修改
 const handleSubmit = (tagId) => {
-  edit.value.status = false
-  editedTag.value.tagId = tagId
+  edit.value.status = false;
+  editedTag.value.tagId = tagId;
   updateTagName(editedTag.value).then((res) => {
-
-    msg.value = ''
-    msg.value = res.msg
-    // loadTagsData();
-  })
-  alert('模拟修改')
+    msg.value = "";
+    msg.value = res.msg;
+    loadTagsData();
+  });
+  alert("模拟修改");
 };
 
 // 删除标签
 const handleDelete = (tagId) => {
-  // deleteTag(tagId).then((res) => {
-  //   msg.value = ''
-  //   msg.value = res.msg
-  //   loadTagsData();
-  // })
-  alert('模拟删除')
+  deleteTag(tagId).then((res) => {
+    msg.value = ''
+    msg.value = res.msg
+    loadTagsData();
+  })
+  alert("模拟删除");
 };
-
 </script>
 
 <template>
@@ -112,23 +118,42 @@ const handleDelete = (tagId) => {
       <el-text type="danger" class="center">{{ msg }}</el-text>
       <!-- 新增标签 -->
       <div class="center">
-        <el-input v-model="editedTag.name" placeholder="在这里输入名字" class="input" />
+        <el-input
+          v-model="editedTag.name"
+          placeholder="在这里输入名字"
+          class="input"
+        />
         <el-button type="success" @click="addNewTag()">新增</el-button>
       </div>
       <!-- 遍历信息 -->
-      <div v-for="(tag, index) in tagsData" style="margin-top: 10px;">
+      <div v-for="(tag, index) in tagsData" style="margin-top: 10px">
         <div class="center">
           <el-text>序号:{{ index + 1 }}</el-text>
           <el-tag class="tag">{{ tag.name }}</el-tag>
           <div class="flex-grow" />
           <!-- 删除与编辑 -->
-          <el-button style="margin-left: 5px;" @click="handleDelete(tag.tagId)" text>删除</el-button>
+          <el-button
+            style="margin-left: 5px"
+            @click="handleDelete(tag.tagId)"
+            text
+            >删除</el-button
+          >
           <el-button @click="openEdit(tag)" text>编辑</el-button>
-        </div><!-- 编辑框 -->
-        <div v-if="edit.status && tag.tagId === edit.tag" style="margin-top: 10px;">
+        </div>
+        <!-- 编辑框 -->
+        <div
+          v-if="edit.status && tag.tagId === edit.tag"
+          style="margin-top: 10px"
+        >
           <div class="center">
-            <el-input v-model="editedTag.name" placeholder="在这里输入新的名字" class="input" />
-            <el-button type="primary" @click="handleSubmit(tag.tagId)">确定</el-button>
+            <el-input
+              v-model="editedTag.name"
+              placeholder="在这里输入新的名字"
+              class="input"
+            />
+            <el-button type="primary" @click="handleSubmit(tag.tagId)"
+              >确定</el-button
+            >
           </div>
         </div>
       </div>

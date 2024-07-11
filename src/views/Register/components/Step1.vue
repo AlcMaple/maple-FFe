@@ -90,6 +90,12 @@ const rules = {
           :rules="rules"
           ref="formRef"
         >
+        <!-- <el-form
+          :label-position="labelPosition"
+          label-width="auto"
+          :model="formLabelAlign"
+          ref="formRef"
+        > -->
           <el-form-item prop="username">
             <el-input
               class="input"

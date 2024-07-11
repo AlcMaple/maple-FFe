@@ -40,33 +40,33 @@ onMounted(() => {
 
   // 模拟的数据
   articleList.value = [
-    {
-      title: "Linux入门",
-    },
-    {
-      title: "前端实现分页",
-    },
-    {
-      title: "部署vue项目",
-    },
+    // {
+    //   title: "Linux入门",
+    // },
+    // {
+    //   title: "前端实现分页",
+    // },
+    // {
+    //   title: "部署vue项目",
+    // },
   ];
 
   types.value = [
-    {
-      name: "vue",
-    },
-    {
-      name: "axios",
-    },
-    {
-      name: "java",
-    },
-    {
-      name: "pinia",
-    },
-    {
-      name: "python",
-    },
+    // {
+    //   name: "vue",
+    // },
+    // {
+    //   name: "axios",
+    // },
+    // {
+    //   name: "java",
+    // },
+    // {
+    //   name: "pinia",
+    // },
+    // {
+    //   name: "python",
+    // },
   ];
 });
 </script>

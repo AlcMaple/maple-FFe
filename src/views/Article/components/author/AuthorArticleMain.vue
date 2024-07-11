@@ -25,34 +25,38 @@ const articleEditor = () => {
 
 // 删除文章
 const deleteArticle = () => {
+  console.log("删除文章,route.query.uid", route.query.uid);
   confirm("确定删除？");
   deleteArt(article.value.aid).then((res) => {
     router.push({
       path: "/userHome/article",
+      query: {
+        userId: route.query.uid,
+      },
     });
   });
 };
 
 // 模拟文章数据
 const article = ref({
-  title: "前端vue入门(模拟数据 组件复用 :-))",
-  content:
-    "# Linux\n" +
-    "***vue :*** [vue3](https://cn.vuejs.org/)\n" +
-    "***CSDN :*** [CSDN官网](https://www.csdn.net/)\n" +
-    "***LeetCode :*** [力扣刷题](https://leetcode.cn/problems/)\n" +
-    "[linux](http://linux.vbird.org/linux_basic/)\n" +
-    "懒得每一个都写不一样了🤣",
-  tags: [
-    {
-      name: "Linux",
-    },
-    {
-      name: "入门",
-    },
-  ],
-  // 开启文章评论
-  commentabled: true,
+  // title: "前端vue入门(模拟数据 组件复用 :-))",
+  // content:
+  //   "# Linux\n" +
+  //   "***vue :*** [vue3](https://cn.vuejs.org/)\n" +
+  //   "***CSDN :*** [CSDN官网](https://www.csdn.net/)\n" +
+  //   "***LeetCode :*** [力扣刷题](https://leetcode.cn/problems/)\n" +
+  //   "[linux](http://linux.vbird.org/linux_basic/)\n" +
+  //   "懒得每一个都写不一样了🤣",
+  // tags: [
+  //   {
+  //     name: "Linux",
+  //   },
+  //   {
+  //     name: "入门",
+  //   },
+  // ],
+  // // 开启文章评论
+  // commentabled: true,
 });
 const contentment = ref({});
 // 接收参数
@@ -75,52 +79,52 @@ onMounted: {
 
   // 模拟评论
   contentment.value = [
-    {
-      comId: 0,
-      uid: 1,
-      nickname: "我会用vue3",
-      createTime: "2023-6-3 19:22",
-      content:
-        "我的 uid 是 '1' 😎与模拟 ( 这条评论我发的 ) 的一样,因此我会有 -删除- 按钮🐔",
-      uavator:
-        "https://img0.baidu.com/it/u=1091210682,206783907&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1684602000&t=1813754cb45a25a646263c4b3a711514",
-      // 子评论
-      subReply: [
-        {
-          uid: 2,
-          nickname: "我在学pinia",
-          createTime: "2023-6-4 12:32",
-          content: "我的 uid 是 '2' 我来玩了🥳",
-          uavator: "../src/assets/imgs/uid2.png",
-          pnickname: "我会用vue3",
-        },
-        {
-          uid: 1,
-          nickname: "我会用vue3",
-          createTime: "2023-6-4 12:39",
-          content: "我的 uid 是 '1' 欢迎欢迎 泰库辣🥳",
-          uavator:
-            "https://img0.baidu.com/it/u=1091210682,206783907&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1684602000&t=1813754cb45a25a646263c4b3a711514",
-          pnickname: "我会用vue3",
-        },
-      ],
-    },
-    {
-      comId: 1,
-      uid: 2,
-      nickname: "我在学pinia",
-      createTime: "2023-6-3 22:32",
-      content: "我的 uid 是 '2' 我没有 -删除- 按钮🐔 因为上面的评论不是我发的",
-      uavator: "../src/assets/imgs/uid2.png",
-    },
-    {
-      comId: 2,
-      uid: 2,
-      nickname: "我在学pinia",
-      createTime: "2023-6-3 22:32",
-      content: "忘记告诉你们了！因为是模拟数据所以这些按钮也就成为摆设了😘",
-      uavator: "../src/assets/imgs/uid2.png",
-    },
+    // {
+    //   comId: 0,
+    //   uid: 1,
+    //   nickname: "我会用vue3",
+    //   createTime: "2023-6-3 19:22",
+    //   content:
+    //     "我的 uid 是 '1' 😎与模拟 ( 这条评论我发的 ) 的一样,因此我会有 -删除- 按钮🐔",
+    //   uavator:
+    //     "https://img0.baidu.com/it/u=1091210682,206783907&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1684602000&t=1813754cb45a25a646263c4b3a711514",
+    //   // 子评论
+    //   subReply: [
+    //     {
+    //       uid: 2,
+    //       nickname: "我在学pinia",
+    //       createTime: "2023-6-4 12:32",
+    //       content: "我的 uid 是 '2' 我来玩了🥳",
+    //       uavator: "../src/assets/imgs/uid2.png",
+    //       pnickname: "我会用vue3",
+    //     },
+    //     {
+    //       uid: 1,
+    //       nickname: "我会用vue3",
+    //       createTime: "2023-6-4 12:39",
+    //       content: "我的 uid 是 '1' 欢迎欢迎 泰库辣🥳",
+    //       uavator:
+    //         "https://img0.baidu.com/it/u=1091210682,206783907&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1684602000&t=1813754cb45a25a646263c4b3a711514",
+    //       pnickname: "我会用vue3",
+    //     },
+    //   ],
+    // },
+    // {
+    //   comId: 1,
+    //   uid: 2,
+    //   nickname: "我在学pinia",
+    //   createTime: "2023-6-3 22:32",
+    //   content: "我的 uid 是 '2' 我没有 -删除- 按钮🐔 因为上面的评论不是我发的",
+    //   uavator: "../src/assets/imgs/uid2.png",
+    // },
+    // {
+    //   comId: 2,
+    //   uid: 2,
+    //   nickname: "我在学pinia",
+    //   createTime: "2023-6-3 22:32",
+    //   content: "忘记告诉你们了！因为是模拟数据所以这些按钮也就成为摆设了😘",
+    //   uavator: "../src/assets/imgs/uid2.png",
+    // },
   ];
 }
 

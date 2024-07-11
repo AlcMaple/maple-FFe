@@ -14,7 +14,6 @@ const user = ref(account.userInfo);
 // console.log("account.userInfo ： ",account.userInfo);
 // console.log("user ： ",user.value);
 
-
 //使用路由
 const router = useRouter();
 const activeIndex = ref("1");
@@ -22,7 +21,7 @@ const activeIndex = ref("1");
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
   // console.log("user.value.uid ： ", user.value.uid);
-  
+
   if (key === "0") {
     router.push({
       path: "/",
@@ -38,12 +37,15 @@ const handleSelect = (key: string, keyPath: string[]) => {
       path: "/userHome",
       query: {
         userId: user.value.uid,
-      }
+      },
     });
   }
   if (key == "2-2") {
     router.push({
       path: "/userHome/article",
+      query: {
+        userId: user.value.uid,
+      },
     });
   }
   if (key == "2-3") {
@@ -79,12 +81,12 @@ const handleSelect = (key: string, keyPath: string[]) => {
       <el-menu-item index="2-3">退出登录</el-menu-item>
     </el-sub-menu>
 
-    <el-sub-menu index="4">
+    <!-- <el-sub-menu index="4">
       <template #title>关于</template>
       <el-menu-item index="4-1">关于站点</el-menu-item>
       <el-menu-item index="4-2">用户手册</el-menu-item>
       <el-menu-item index="4-3">隐私信息</el-menu-item>
-    </el-sub-menu>
+    </el-sub-menu> -->
   </el-menu>
 </template>
 

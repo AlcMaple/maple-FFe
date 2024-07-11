@@ -69,6 +69,10 @@ const handleLikeClick = async (event, article, current_uid) => {
       console.log(err);
     });
 };
+
+const getImageUrl = (path) => {
+  return `${import.meta.env.BASE_URL}${path}`;
+};
 </script>
 
 <template>
@@ -80,8 +84,12 @@ const handleLikeClick = async (event, article, current_uid) => {
     <!-- 第一栏 包含用户 时间 标签 -->
     <el-row class="row">
       <el-col :span="4">
-        <img
+        <!-- <img
           :src="article.uavator"
+          style="height: 30px; border-radius: 50%; margin-right: 15px"
+        />{{ article.author }} -->
+        <img
+          :src="getImageUrl(article.uavator)"
           style="height: 30px; border-radius: 50%; margin-right: 15px"
         />{{ article.author }}
       </el-col>

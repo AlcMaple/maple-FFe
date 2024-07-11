@@ -89,20 +89,18 @@ const submitForm = () => {
 };
 
 const resetForm = () => {
-  ruleForm.value = [
-    {
-      uid: current_uid,
-      nickname: "",
-      gender: "",
-      email: "",
-      mobile: "",
-      age: 0,
-      description: "",
-      // 图像
-      avator: "",
-      image_data: "",
-    },
-  ];
+  ruleForm2.value = {
+    uid: current_uid,
+    nickname: "",
+    gender: "",
+    email: "",
+    mobile: "",
+    age: 0,
+    description: "",
+    // 图像
+    avator: "",
+    image_data: "",
+  };
 };
 
 const imageUrl = ref("");

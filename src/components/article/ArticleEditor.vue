@@ -22,29 +22,30 @@ const current_aid = ref(0);
 
 const route = useRoute();
 // 模拟文章数据
-const article = ref({
-  title: "前端vue入门(模拟数据 组件复用 :-))",
-  content:
-    "# Linux\n" +
-    "***vue :*** [vue3](https://cn.vuejs.org/)\n" +
-    "***CSDN :*** [CSDN官网](https://www.csdn.net/)\n" +
-    "***LeetCode :*** [力扣刷题](https://leetcode.cn/problems/)\n" +
-    "[linux](http://linux.vbird.org/linux_basic/)\n" +
-    "懒得每一个都写不一样了🤣",
-  description: "vue3更简单了",
-  tags: [
-    {
-      name: "Linux",
-    },
-    {
-      name: "入门",
-    },
-  ],
-  // 开启文章评论
-  commentabled: true,
-  type: [],
-  typeId: 0,
-});
+const article = ref();
+//   {
+//   title: "前端vue入门(模拟数据 组件复用 :-))",
+//   content:
+//     "# Linux\n" +
+//     "***vue :*** [vue3](https://cn.vuejs.org/)\n" +
+//     "***CSDN :*** [CSDN官网](https://www.csdn.net/)\n" +
+//     "***LeetCode :*** [力扣刷题](https://leetcode.cn/problems/)\n" +
+//     "[linux](http://linux.vbird.org/linux_basic/)\n" +
+//     "懒得每一个都写不一样了🤣",
+//   description: "vue3更简单了",
+//   tags: [
+//     {
+//       name: "Linux",
+//     },
+//     {
+//       name: "入门",
+//     },
+//   ],
+//   // 开启文章评论
+//   commentabled: true,
+//   type: [],
+//   typeId: 0,
+// }
 
 const articleSubmit = ref({
   // aid: 0,
@@ -59,26 +60,26 @@ const articleSubmit = ref({
 
 // 文章分类
 const types = ref([
-  {
-    name: "vue",
-    tagId: 1,
-  },
-  {
-    name: "axios",
-    tagId: 2,
-  },
-  {
-    name: "java",
-    tagId: 3,
-  },
-  {
-    name: "pinia",
-    tagId: 4,
-  },
-  {
-    name: "python",
-    tagId: 5,
-  },
+  // {
+  //   name: "vue",
+  //   tagId: 1,
+  // },
+  // {
+  //   name: "axios",
+  //   tagId: 2,
+  // },
+  // {
+  //   name: "java",
+  //   tagId: 3,
+  // },
+  // {
+  //   name: "pinia",
+  //   tagId: 4,
+  // },
+  // {
+  //   name: "python",
+  //   tagId: 5,
+  // },
 ]);
 
 // 发送请求接收数据

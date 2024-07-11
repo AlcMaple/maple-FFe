@@ -33,9 +33,9 @@ const jumpArticlePage = (aid, uid) => {
     @click="jumpArticlePage(article.aid, article.uid)"
   >
     <el-text class="title">{{ article.title }}</el-text>
-    <div>
+    <!-- <div>
       <el-text>{{ article.createTime }}</el-text>
-    </div>
+    </div> -->
   </div>
 </template>
 

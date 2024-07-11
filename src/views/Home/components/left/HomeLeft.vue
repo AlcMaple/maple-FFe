@@ -21,6 +21,7 @@ const createArticle = () => {
       path: "/editor",
       query: {
         modify: 0,
+        uid: current_uid.value,
       },
     });
   } else {

@@ -8,15 +8,18 @@
 import httpInstance from "@/utils/http";
 
 //获取用户标签信息
-export function getUserTagList() {
+export function getUserTagList(uid) {
     return httpInstance({
         url: `/tag/tagList`,
-        method: 'get',
+        method: 'post',
+        data: {
+            uid: uid
+        }
     })
 }
 
 export function getUserArticleList(data) {
-    console.log("getUserArticleList：",data);
+    console.log("getUserArticleList：", data);
     return httpInstance({
         url: `/article`,
         method: 'post',
