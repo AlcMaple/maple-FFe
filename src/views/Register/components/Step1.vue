@@ -47,13 +47,13 @@ var validatePassword = (rule, value, callback) => {
   if (value === "") {
     callback(new Error("请输入密码"));
   } else if (
-    !/^(?=.*[a-zA-Z]).{1,9}$/.test(
+    !/^(?=.*[a-zA-Z]).{1,16}$/.test(
       value
     )
   ) {
     callback(
       new Error(
-        "至少包含字母，且长度不超过9位"
+        "至少包含字母，且长度不超过16位"
       )
     );
   } else {
