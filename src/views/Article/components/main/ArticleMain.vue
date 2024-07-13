@@ -34,13 +34,13 @@ const contentment = ref([]);
 onMounted: {
   //接收参数
   getHomeArticleDetails(route.query.aid).then((res) => {
-    console.log("获取文章信息", res.data);
+    // console.log("获取文章信息", res.data);
     article.value = res.data;
   });
   // 接收文章评论
-  console.log("这些哪里？", route.query.aid);
+  // console.log("这些哪里？", route.query.aid);
   getPublicContentment(route.query.aid).then((res) => {
-    console.log("文章评论", res);
+    // console.log("文章评论", res);
     contentment.value = res.data;
 
     // 评论头像处理

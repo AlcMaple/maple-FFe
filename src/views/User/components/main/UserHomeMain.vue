@@ -33,11 +33,11 @@ onMounted(() => {
     userData.value[0].uid = userId;
   } 
 
-  console.log("userData:", userData.value);
+  // console.log("userData:", userData.value);
 
   // 获取后台数据
   getUserInfo(userData).then((res) => {
-    console.log("res:", res);
+    // console.log("res:", res);
     if (res) {
       // console.log(res);
       userData.value = [res.userInfo];
@@ -48,7 +48,7 @@ onMounted(() => {
     }
   });
   getUserTagList(userData.value[0].uid).then((res) => {
-    console.log("用户主页", res);
+    // console.log("用户主页", res);
     // tags.value=res.data.pageInfo.list
     tags.value = res.data;
   });

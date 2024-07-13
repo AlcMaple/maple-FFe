@@ -53,20 +53,20 @@ if (accountData) {
 }
 
 const handleLikeClick = async (event, article, current_uid) => {
-  console.log("current_uid：", current_uid);
+  // console.log("current_uid：", current_uid);
   event.stopPropagation();
 
   // 调用接口，传递uid和article.likeCount
   handleThumb(article.aid, article.likeCount + 1, current_uid)
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       // 不采用赋值的方式，而是直接修改原对象
       if (res.code == 200) {
         article.likeCount++;
       }
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
     });
 };
 

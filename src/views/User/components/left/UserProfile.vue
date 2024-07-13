@@ -20,7 +20,7 @@ let current_uid = 0;
 if (accountData) {
   // 解析JSON字符串以获取JavaScript对象
   let accountObj = JSON.parse(accountData);
-  console.log("accountObj：", accountObj);
+  // console.log("accountObj：", accountObj);
 
   // 访问userInfo对象中的uid属性
   current_uid = accountObj.userInfo.uid;
@@ -71,13 +71,13 @@ const password = ref("");
 // 配置表单规则
 // 判定验证是否通过
 const submitForm = () => {
-  console.log("ruleFormrrrr.value：", ruleForm2.value);
+  // console.log("ruleFormrrrr.value：", ruleForm2.value);
   const ruleFormRef = ruleForm2.value;
   updateUserInfo(ruleFormRef).then((res) => {
-    console.log(res);
+    // console.log(res);
     if (res.code == 0) {
       getUserInfo(ruleForm).then((res) => {
-        console.log("用户信息", [res.data]);
+        // console.log("用户信息", [res.data]);
         // console.log(res);
 
         ruleForm.value = [res.userInfo];

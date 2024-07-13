@@ -29,10 +29,10 @@ onMounted(() => {
   // 获取userId
   // const userId = props.userId;
   // console.log("userId:", userId);
-  console.log("articleSubmit:", articleSubmit.value);
+  // console.log("articleSubmit:", articleSubmit.value);
   // 获取后端文章数据
   getUserArticleList(articleSubmit.value).then((res) => {
-    console.log("获取文章数据成功,res:", res);
+    // console.log("获取文章数据成功,res:", res);
     // articleList.value = res.data.pageInfo.list;
     articleList.value = res.articleList;
     // console.log(articleList.value)

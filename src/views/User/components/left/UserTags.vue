@@ -18,7 +18,7 @@ const props = defineProps({
 onMounted: {
   // 获取userId
   const userId = props.userId;
-  console.log("userId:", userId);
+  // console.log("userId:", userId);
   // 加载参数
   loadTagsData = async () => {
     const res = await getUserTagList(props.userId);

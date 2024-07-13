@@ -27,7 +27,7 @@ const createArticle = () => {
       uid: uid,
     })
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       // console.log(res.status);
       if (res.data.code == "200") {
         // this.$message.success(res.data.msg);

@@ -86,11 +86,11 @@ const types = ref([
 onMounted: {
   modify.value = route.query.modify;
   current_aid.value = route.query.aid;
-  console.log("Edit_current_aid:", current_aid.value);
+  // console.log("Edit_current_aid:", current_aid.value);
   if (modify.value == 1) {
     getArticleDetails(route.query.aid).then((res) => {
       article.value = res.data;
-      console.log("获取文章", article.value);
+      // console.log("获取文章", article.value);
     });
     // articleSubmit.value.aid = article.value.aid
     // articleSubmit.value.content = article.value.content
@@ -101,7 +101,7 @@ onMounted: {
   }
   // 获取全部分类信息
   getTypes().then((res) => {
-    console.log("全部分类", res);
+    // console.log("全部分类", res);
     types.value = res.data;
   });
 
@@ -113,11 +113,11 @@ onMounted: {
   if (accountData) {
     // 解析JSON字符串以获取JavaScript对象
     let accountObj = JSON.parse(accountData);
-    console.log("accountObj：", accountObj);
+    // console.log("accountObj：", accountObj);
 
     // 访问userInfo对象中的uid属性
     current_uid.value = accountObj.userInfo.uid;
-    console.log("current_uid：", current_uid.value);
+    // console.log("current_uid：", current_uid.value);
   }
 }
 
@@ -128,7 +128,7 @@ const put = () => {
   articleSubmit.value.description = article.value.description;
   articleSubmit.value.title = article.value.title;
   modifyArticle(articleSubmit.value).then((res) => {
-    console.log("修改文章", res);
+    // console.log("修改文章", res);
     msg.value = "";
     msg.value = res.msg;
   });
@@ -142,8 +142,8 @@ const add = () => {
   articleSubmit.value.description = article.value.description;
   articleSubmit.value.title = article.value.title;
   addArticle(articleSubmit.value).then((res) => {
-    console.log("新增文章：", res.msg);
-    console.log("msg：", msg.value);
+    // console.log("新增文章：", res.msg);
+    // console.log("msg：", msg.value);
     msg.value = "";
     msg.value = res.msg;
   });
@@ -163,10 +163,10 @@ const selectTag = (typeId) => {
   const index = articleSubmit.value.tagIds.indexOf(typeId);
   if (index === -1) {
     articleSubmit.value.tagIds.push(typeId);
-    console.log("选择标签：", articleSubmit.value.tagIds);
+    // console.log("选择标签：", articleSubmit.value.tagIds);
   } else {
     articleSubmit.value.tagIds.splice(index, 1);
-    console.log("取消选择标签：", articleSubmit.value.tagIds);
+    // console.log("取消选择标签：", articleSubmit.value.tagIds);
   }
 
   // article.value.type.push(name);
@@ -176,7 +176,7 @@ const selectTag = (typeId) => {
 // 选择分类
 const selectType = (typeId) => {
   articleSubmit.value.typeId = typeId;
-  console.log("选择分类：", articleSubmit.value.typeId);
+  // console.log("选择分类：", articleSubmit.value.typeId);
   // article.value.type.push(name);
   // console.log("选择分类：", article.value.type);
 };

@@ -9,7 +9,7 @@ const articleList = ref([]);
 onMounted(() => {
   // 从后端获取数据
   getIndexTime().then((res) => {
-    console.log("首页返回的数据", res);
+    // console.log("首页返回的数据", res);
     // articleList.value = res.data.page.list;
     articleList.value = res.data;
     // console.log('首页返回数据',articleList.value);

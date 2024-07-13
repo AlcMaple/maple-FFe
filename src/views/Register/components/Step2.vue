@@ -19,7 +19,7 @@ const nextStep = () => {
       localStorage.setItem("phone", formLabelAlign.phone);
 
       axios
-        .post("http://127.0.0.1:8081/register", {
+        .post("http://python.alcmaple.cn/register", {
           phone: formLabelAlign.phone,
           verification_code: formLabelAlign.checkPass,
           username: localStorage.getItem("username"),
@@ -101,7 +101,7 @@ const refreshCaptcha = () => {
   // 获取验证码
   // 向正确的端点发送POST请求
   axios
-    .post("http://127.0.0.1:8081/send_verification_code", {
+    .post("http://python.alcmaple.cn/send_verification_code", {
       phone: formLabelAlign.phone,
     })
     .then((res) => {

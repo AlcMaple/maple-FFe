@@ -24,7 +24,7 @@ const articleList = ref([]);
 onMounted(() => {
   // 获取数据
   getIndexHot().then((res) => {
-    console.log("热点文章：", res);
+    // console.log("热点文章：", res);
     // articleList.value = res.data.page.list;
     articleList.value = res.data.map((item) => {
       return {
@@ -34,7 +34,7 @@ onMounted(() => {
     });
   });
   getTypes().then((res) => {
-    console.log("全部分类", res);
+    // console.log("全部分类", res);
     types.value = res.data;
   });
 

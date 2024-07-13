@@ -6,7 +6,7 @@ import LayoutFooter from '@/components/LayoutFooter.vue';
 
 const route = useRoute();
 const userId = route.query.userId;
-console.log("UserHome.vue: userId：", userId);
+// console.log("UserHome.vue: userId：", userId);
 </script>
 
 <template>

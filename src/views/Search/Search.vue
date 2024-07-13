@@ -19,7 +19,7 @@ const queryData = ref({
 onMounted: {
   queryData.value.query = route.query.para;
   getSearch(queryData.value).then((res) => {
-    console.log("搜索结果：", res);
+    // console.log("搜索结果：", res);
     // console.log('搜索结果', res.data.pageInfo.list);
     // articleList.value = res.data.pageInfo.list;
     articleList.value = res.data;
@@ -66,9 +66,9 @@ onMounted: {
 
 // 启动搜索
 const startSearch = () => {
-  console.log("查询条件", queryData.value);
+  // console.log("查询条件", queryData.value);
   getSearch(queryData.value).then((res) => {
-    console.log("搜索结果：", res);
+    // console.log("搜索结果：", res);
     // console.log('搜索结果', res.data.pageInfo.list);
     // articleList.value = res.data.pageInfo.list;
     articleList.value = res.data;

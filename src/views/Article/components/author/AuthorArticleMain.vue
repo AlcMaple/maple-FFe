@@ -25,7 +25,7 @@ const articleEditor = () => {
 
 // 删除文章
 const deleteArticle = () => {
-  console.log("删除文章,route.query.uid", route.query.uid);
+  // console.log("删除文章,route.query.uid", route.query.uid);
   confirm("确定删除？");
   deleteArt(article.value.aid).then((res) => {
     router.push({
@@ -64,16 +64,16 @@ const route = useRoute();
 // 发送请求接收数据
 onMounted: {
   //接收参数
-  console.log("获取细节数据的aid：", route.query.aid);
-  console.log("获取细节数据的uid：", route.query.uid);
+  // console.log("获取细节数据的aid：", route.query.aid);
+  // console.log("获取细节数据的uid：", route.query.uid);
   getArticleDetails(route.query.aid).then((res) => {
-    console.log("作者文章页", res);
+    // console.log("作者文章页", res);
     article.value = res.data;
-    console.log("文章详情：", article.value);
+    // console.log("文章详情：", article.value);
   });
   getPublicContentment(route.query.aid).then((res) => {
     // console.log("静态评论",contentment.value);
-    console.log("文章评论", res.data);
+    // console.log("文章评论", res.data);
     contentment.value = res.data;
 
     // 评论头像处理

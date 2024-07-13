@@ -49,12 +49,12 @@ const access = () => {
     if (res.code != 0) {
       // msg.value = res.msg
       ElMessage({ type: "error", message: res.msg });
-      console.log(res.msg);
+      // console.log(res.msg);
     } else {
       localStorage.setItem("token", res.userInfo.token);
       //存储数据
       const account = res;
-      console.log('登录:用户数据',res)
+      // console.log('登录:用户数据',res)
       accountStore.setAccount(account);
       //登陆成功跳转首页 并传递数据
       router.push({

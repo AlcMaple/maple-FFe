@@ -51,11 +51,11 @@ onMounted: {
   if (accountData) {
     // 解析JSON字符串以获取JavaScript对象
     let accountObj = JSON.parse(accountData);
-    console.log("accountObj：", accountObj);
+    // console.log("accountObj：", accountObj);
 
     // 访问userInfo对象中的uid属性
     current_uid.value = accountObj.userInfo.uid;
-    console.log("current_uid：", current_uid.value);
+    // console.log("current_uid：", current_uid.value);
   }
 
   code.value = account.code;

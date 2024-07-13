@@ -38,7 +38,7 @@ const send = ref({
 
 // 添加回复信息
 const sendMsg = (parentComId, pnickname = "") => {
-  console.log("pnickname：", pnickname);
+  // console.log("pnickname：", pnickname);
   if (code.value != 0) {
     router.push({
       path: "/login",
@@ -49,18 +49,18 @@ const sendMsg = (parentComId, pnickname = "") => {
     send.value.parentCount = props.contentments.length;
   }
 
-  console.log("props.aid：", props.aid);
+  // console.log("props.aid：", props.aid);
 
   send.value.aid = props.aid;
   send.value.parentComId = parentComId;
-  console.log("parentComId：", parentComId);
+  // console.log("parentComId：", parentComId);
   send.value.pnickname = pnickname;
-  console.log("uid：", send.value.uid);
-  console.log("send.value：", send.value);
+  // console.log("uid：", send.value.uid);
+  // console.log("send.value：", send.value);
   postSendMag(send.value).then((res) => {
     send.value.parentCount += 1;
     location.reload();
-    console.log("添加评论", res);
+    // console.log("添加评论", res);
   });
   alert("模拟添加");
 };
@@ -88,11 +88,11 @@ onMounted: {
   if (accountData) {
     // 解析JSON字符串以获取JavaScript对象
     let accountObj = JSON.parse(accountData);
-    console.log("accountObj：", accountObj);
+    // console.log("accountObj：", accountObj);
 
     // 访问userInfo对象中的uid属性
     current_uid.value = accountObj.userInfo.uid;
-    console.log("current_uid：", current_uid.value);
+    // console.log("current_uid：", current_uid.value);
   }
 }
 </script>

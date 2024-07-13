@@ -19,7 +19,7 @@ const router = useRouter();
 const activeIndex = ref("1");
 //监听按键进行跳转
 const handleSelect = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
+  // console.log(key, keyPath);
   // console.log("user.value.uid ： ", user.value.uid);
 
   if (key === "0") {
