@@ -1,6 +1,10 @@
 # maple-FFe
 
-一个基于 Vue3 + ElementPlus 的论坛项目
+一个基于 Vue3 + ElementPlus + Python + Flask + Axios + Vue Router + Pinia 的论坛项目，项目采用前后端分离架构，以SPA（单页应用）架构作为前端的架构模式
+
+项目前端：[maple-FFe](https://github.com/AlcMaple/maple-FFe.git)
+
+项目后端：[maple-forum](https://github.com/AlcMaple/maple-forum.git)
 
 # 当前版本
 
@@ -75,8 +79,6 @@ python run.py
 使用管理员模式打开命令行窗口
 
 ![1](.\src\assets\images\1.png)
-
-- 如果需要在本地搭建的话，需要修改http.js以及login.vue里的请求地址为本地：`http://127.0.0.1:8081`
 
 # 感谢
 

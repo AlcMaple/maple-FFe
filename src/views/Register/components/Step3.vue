@@ -23,7 +23,7 @@ const jumpLogin = () => {
         <h1 style="margin-top: 170px;margin-bottom: 10px;">你已完成注册！欢迎加入我们的乐园</h1>
         <el-tag effect="dark" round type="success">完成</el-tag>
         <el-row style="margin-top: 100px;margin-bottom: 50px;">
-            <el-button size="large" @click="jumpProfile">完善资料</el-button>
+            <!-- <el-button size="large" @click="jumpProfile">完善资料</el-button> -->
             <el-button size="large" @click="jumpLogin">登录</el-button>
         </el-row>
     </div>

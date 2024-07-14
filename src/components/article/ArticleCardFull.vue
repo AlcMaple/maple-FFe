@@ -17,7 +17,7 @@ const props = defineProps({
 const router = useRouter();
 // 在此处设计携带aid跳转
 const jumpDetailsPage = (aid) => {
-  console.log("跳转");
+  // console.log("跳转");
   if (props.author == 1) {
     router.push({
       path: "/article/auart",

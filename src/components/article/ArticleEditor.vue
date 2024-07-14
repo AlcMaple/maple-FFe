@@ -1,6 +1,6 @@
 <!-- 编辑文章 -->
 <script setup>
-import { useRoute } from "vue-router";
+import { useRoute,useRouter } from "vue-router";
 import LayoutFooter from "@/components/LayoutFooter.vue";
 import { ref } from "vue";
 
@@ -21,6 +21,7 @@ const current_uid = ref(0);
 const current_aid = ref(0);
 
 const route = useRoute();
+const router = useRouter();
 // 模拟文章数据
 const article = ref();
 //   {
@@ -127,27 +128,94 @@ const put = () => {
   articleSubmit.value.content = article.value.content;
   articleSubmit.value.description = article.value.description;
   articleSubmit.value.title = article.value.title;
+
+  // 检查是否有标题
+  if (articleSubmit.value.title == undefined) {
+    msg.value = "请填写标题";
+    return;
+  }
+  // 检查是否有描述
+  if (articleSubmit.value.description == undefined) {
+    msg.value = "请填写描述";
+    return;
+  }
+
+  // 检查是否有内容
+  if (articleSubmit.value.content == undefined) {
+    msg.value = "请填写内容";
+    return;
+  }
+
+  // 检查是否有分类
+  if (articleSubmit.value.typeId == 0) {
+    msg.value = "请选择分类";
+    return;
+  }
+
+  // 检查是否有标签
+  if (articleSubmit.value.tagIds.length == 0) {
+    msg.value = "请选择标签";
+    return;
+  }
   modifyArticle(articleSubmit.value).then((res) => {
     // console.log("修改文章", res);
     msg.value = "";
     msg.value = res.msg;
   });
-  alert("模拟保存修改");
+  alert("文章已修改");
+  // 跳转到首页
+  router.push({
+    path: "/",
+  });
 };
 
 // 新建数据提交
 const add = () => {
-  // articleSubmit.value.aid = article.value.aid
   articleSubmit.value.content = article.value.content;
   articleSubmit.value.description = article.value.description;
   articleSubmit.value.title = article.value.title;
+  // console.log(article.value.title);
+  // 检查是否有标题
+  if (articleSubmit.value.title == undefined) {
+    msg.value = "请填写标题";
+    return;
+  }
+  // 检查是否有描述
+  if (articleSubmit.value.description == undefined) {
+    msg.value = "请填写描述";
+    return;
+  }
+
+  // 检查是否有内容
+  if (articleSubmit.value.content == undefined) {
+    msg.value = "请填写内容";
+    return;
+  }
+
+  // 检查是否有分类
+  if (articleSubmit.value.typeId == 0) {
+    msg.value = "请选择分类";
+    return;
+  }
+
+  // 检查是否有标签
+  if (articleSubmit.value.tagIds.length == 0) {
+    msg.value = "请选择标签";
+    return;
+  }
+  // articleSubmit.value.aid = article.value.aid
+
   addArticle(articleSubmit.value).then((res) => {
     // console.log("新增文章：", res.msg);
     // console.log("msg：", msg.value);
     msg.value = "";
     msg.value = res.msg;
   });
-  alert("模拟新增");
+  alert("文章已添加");
+  // 跳转到首页
+  router.push({
+    path: "/",
+  });
 };
 // 保存向后端发送数据
 const save = () => {

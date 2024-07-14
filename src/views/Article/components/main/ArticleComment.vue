@@ -62,7 +62,7 @@ const sendMsg = (parentComId, pnickname = "") => {
     location.reload();
     // console.log("添加评论", res);
   });
-  alert("模拟添加");
+  alert("添加成功");
 };
 
 // 删除一个回复消息
@@ -72,11 +72,11 @@ const deleteMag = (comId) => {
       path: "/login",
     });
   }
-  // deleteSendMag(comId).then(res => {
-  //     location.reload();
-  //     console.log('删除评论', res)
-  // });
-  alert("模拟删除");
+  deleteSendMag(comId).then(res => {
+      location.reload();
+      // console.log('删除评论', res)
+  });
+  alert("删除成功");
 };
 
 onMounted: {

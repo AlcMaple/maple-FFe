@@ -10,15 +10,15 @@ const props = defineProps({
 // 用户信息表
 let userData = ref([
   {
-    uid: 1,
-    nickname: "我在学pinia",
-    account: "20230408",
-    gender: "man",
-    age: "22",
-    email: "2710740557@qq.com",
-    mobile: "保密",
-    description: "欢迎发邮件到我的信箱",
-    avator: "src/assets/imgs/uid2.png",
+    // uid: 1,
+    // nickname: "我在学pinia",
+    // account: "20230408",
+    // gender: "man",
+    // age: "22",
+    // email: "2710740557@qq.com",
+    // mobile: "保密",
+    // description: "欢迎发邮件到我的信箱",
+    // avator: "src/assets/imgs/uid2.png",
   },
 ]);
 
@@ -31,7 +31,7 @@ onMounted(() => {
   // 如果userId不为undefined，则修改用户信息中的uid为userId
   if (userId) {
     userData.value[0].uid = userId;
-  } 
+  }
 
   // console.log("userData:", userData.value);
 
@@ -39,11 +39,11 @@ onMounted(() => {
   getUserInfo(userData).then((res) => {
     // console.log("res:", res);
     if (res) {
-      // console.log(res);
+      // // console.log(res);
       userData.value = [res.userInfo];
       // console.log(userData.value[0]);
       const img = `data:image/jpg;base64,${res.userInfo.avator}`;
-      console.log(img);
+      // console.log(img);
       userData.value[0].avator = img;
     }
   });

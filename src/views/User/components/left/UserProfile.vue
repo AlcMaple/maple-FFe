@@ -160,7 +160,7 @@ const beforeAvatarUpload: UploadProps["beforeUpload"] = (rawFile) => {
               <el-upload
                 class="avatar-uploader"
                 :show-file-list="false"
-                action="http://127.0.0.1:8081/upload"
+                action="http://python.alcmaple.cn/upload"
                 :on-success="handleAvatarSuccess"
                 :before-upload="beforeAvatarUpload"
                 prop="avator"

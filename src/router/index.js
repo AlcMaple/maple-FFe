@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory,createWebHashHistory } from 'vue-router'
 
 import Login from '@/views/Login/index.vue'
 import Layout from '@/views/Layout/index.vue'
@@ -28,7 +28,8 @@ import CheckArticle from '@/views/Admin/components/left/CheckArticle.vue'
 import CheckContentment from '@/views/Admin/components/left/CheckContentment.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  // 使用哈希模式，解决上线项目的刷新页面后路由丢失的问题
+  history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     // 一级路由 主页
     {

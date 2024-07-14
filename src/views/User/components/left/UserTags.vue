@@ -29,26 +29,26 @@ onMounted: {
 
   // 模拟数据
   tagsData.value = [
-    {
-      name: "vue",
-      tagId: 1,
-    },
-    {
-      name: "axios",
-      tagId: 2,
-    },
-    {
-      name: "java",
-      tagId: 3,
-    },
-    {
-      name: "pinia",
-      tagId: 4,
-    },
-    {
-      name: "python",
-      tagId: 5,
-    },
+    // {
+    //   name: "vue",
+    //   tagId: 1,
+    // },
+    // {
+    //   name: "axios",
+    //   tagId: 2,
+    // },
+    // {
+    //   name: "java",
+    //   tagId: 3,
+    // },
+    // {
+    //   name: "pinia",
+    //   tagId: 4,
+    // },
+    // {
+    //   name: "python",
+    //   tagId: 5,
+    // },
   ];
 }
 
@@ -84,7 +84,7 @@ const addNewTag = () => {
     msg.value = res.msg;
     loadTagsData();
   });
-  alert("模拟新增");
+  alert("标签已添加");
 };
 
 // 提交修改
@@ -96,7 +96,7 @@ const handleSubmit = (tagId) => {
     msg.value = res.msg;
     loadTagsData();
   });
-  alert("模拟修改");
+  alert("标签已修改");
 };
 
 // 删除标签
@@ -106,7 +106,7 @@ const handleDelete = (tagId) => {
     msg.value = res.msg
     loadTagsData();
   })
-  alert("模拟删除");
+  alert("标签已删除");
 };
 </script>
 

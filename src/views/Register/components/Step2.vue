@@ -5,7 +5,7 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 import { ref, reactive } from "vue";
 import axios from "axios";
-import { ElMessage } from "element-plus";
+import { ElMessage,ElLoading } from "element-plus";
 import "element-plus/theme-chalk/el-message.css";
 
 const formRef = ref(null);
@@ -14,6 +14,12 @@ const nextStep = () => {
   // 验证表单信息
   formRef.value.validate(async (valid) => {
     if (valid) {
+      // 显示加载
+      const loadingInstance = ElLoading.service({
+        fullscreen: true,
+        text: "正在注册...",
+        background: "rgba(0, 0, 0, 0.7)",
+      })
       // 将表单信息存储到本地
       localStorage.setItem("email", formLabelAlign.email);
       localStorage.setItem("phone", formLabelAlign.phone);
@@ -27,6 +33,8 @@ const nextStep = () => {
           email: localStorage.getItem("email"),
         })
         .then((res) => {
+          // 关闭加载
+          loadingInstance.close();
           // console.log(res);
           // console.log(res.status);
           if (res.data.code == "200") {
@@ -41,12 +49,14 @@ const nextStep = () => {
           }
         })
         .catch((error) => {
+          // 隐藏加载
+          loadingInstance.close();
           // 提示用户
           ElMessage.error("请检查输入信息");
         });
     } else {
       // 提示用户
-      ElMessage.error("服务器500错误");
+      ElMessage.error("用户注册已满，请联系管理员");
     }
   });
 };
@@ -203,7 +213,7 @@ const refreshCaptcha = () => {
                 <template #append>
                   <el-button
                     @click="refreshCaptcha"
-                    :disabled="isButtonDisabled"
+                    :disabled="formLabelAlign.isButtonDisabled"
                     >{{ formLabelAlign.time }}</el-button
                   >
                 </template>

@@ -44,6 +44,7 @@ const access = () => {
   //   path: "/loading",
   // });
   // 获取登录结果
+  console.log("agree", agree.value);
   login(loginPara.value).then((res) => {
     console.log(res.code);
     if (res.code != 0) {
@@ -142,10 +143,10 @@ const agree = ref(1);
             </el-button-group>
           </div>
           <!-- 协议框 -->
-          <div style="margin-top: 30px; text-align: center">
+          <!-- <div style="margin-top: 30px; text-align: center">
             <el-switch v-model="agree" />
             <el-text class="title">同意FoRum《用户隐私协议》</el-text>
-          </div>
+          </div> -->
         </div>
       </el-card>
     </el-col>

@@ -12,12 +12,12 @@ import { Sunrise } from '@element-plus/icons-vue'
           <el-icon><Sunrise /></el-icon>
           Forum
         </el-text>
-        <el-row>
+        <!-- <el-row>
           <el-rate/>
-        </el-row>
-        <el-text>
+        </el-row> -->
+        <!-- <el-text>
           copyright © Forum 自由论坛
-        </el-text>
+        </el-text> -->
       </el-space>
     </div>
   </div>

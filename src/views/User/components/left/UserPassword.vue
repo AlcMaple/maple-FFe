@@ -3,6 +3,7 @@ import { InfoFilled } from "@element-plus/icons-vue";
 import { ref } from "vue";
 import axios from "axios";
 import { useAccountStore } from "@/stores/useAccountStore";
+import { ElLoading, ElMessage } from "element-plus";
 
 //加载参数
 const accountStore = useAccountStore();
@@ -15,18 +16,26 @@ const formLabelAlign = ref({
 });
 
 const createArticle = () => {
+  // 显示加载
+  const loading = ElLoading.service({
+    lock: true,
+    text: "正在修改密码...",
+    background: "rgba(0, 0, 0, 0.7)",
+  });
   // 获取uid
   let uid = localStorage.getItem("account");
   // console.log(account['userInfo']);
   // const uid = account["userInfo"]["uid"];
   // console.log(uid);
   axios
-    .post("http://127.0.0.1:8081/user/password", {
+    .post("http://python.alcmaple.cn/user/password", {
       oldPassword: formLabelAlign.value.password,
       newPassword: formLabelAlign.value.newpassword,
       uid: uid,
     })
     .then((res) => {
+      // 隐藏加载
+      loading.close();
       // console.log(res);
       // console.log(res.status);
       if (res.data.code == "200") {
@@ -45,6 +54,8 @@ const createArticle = () => {
       }
     })
     .catch((error) => {
+      // 隐藏加载
+      loading.close();
       // 提示用户
       ElMessage.error("服务器500错误");
     });
